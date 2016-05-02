@@ -9,7 +9,7 @@
                     class="ch.shire.bandman.entity.Asset"
                     view="_local"/>
     </dsContext>
-    <layout>
+    <layout spacing="true">
         <fieldGroup id="assetFields"
                     datasource="assetDs">
             <column width="250px">

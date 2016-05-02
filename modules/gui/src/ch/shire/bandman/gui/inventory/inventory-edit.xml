@@ -12,7 +12,7 @@
                                   property="assets"/>
         </datasource>
     </dsContext>
-    <layout expand="assetTable"
+    <layout expand="assetGroup"
             spacing="true">
         <fieldGroup id="fields"
                     datasource="inventoryDs">
@@ -20,26 +20,33 @@
                 <field id="name"/>
             </column>
         </fieldGroup>
-        <table id="assetTable"
-               editable="true"
-               width="100%">
-            <actions>
-                <action id="create"/>
-                <action id="edit"/>
-            </actions>
-            <columns>
-                <column id="name"/>
-                <column id="quantity"/>
-            </columns>
-            <rows datasource="assetDs"/>
-            <rowsCount/>
-            <buttonsPanel>
-                <button id="addAsset"
-                        action="assetTable.create"/>
-                <button id="editAsset"
-                        action="assetTable.edit"/>
-            </buttonsPanel>
-        </table>
+        <groupBox id="assetGroup"
+                  caption="Assets">
+            <table id="assetTable"
+                   editable="true"
+                   height="100%"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="quantity"/>
+                </columns>
+                <rows datasource="assetDs"/>
+                <rowsCount/>
+                <buttonsPanel>
+                    <button id="addAsset"
+                            action="assetTable.create"/>
+                    <button id="editAsset"
+                            action="assetTable.edit"/>
+                    <button id="removeAsset"
+                            action="assetTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <frame height="45px"
                screen="editWindowActions"/>
     </layout>
