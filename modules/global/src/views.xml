@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ch.shire.bandman.entity.Inventory"
+          name="inventoryWithAssets">
+        <property name="name"/>
+        <property name="assets">
+            <property name="name"/>
+            <property name="quantity"/>
+        </property>
+    </view>
+</views>

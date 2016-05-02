@@ -1,0 +1,11 @@
+-- begin BANDMAN_INVENTORY
+create unique index IDX_BANDMAN_INVENTORY_UNIQ_NAME on BANDMAN_INVENTORY (NAME) ^
+-- end BANDMAN_INVENTORY
+-- begin BANDMAN_ASSET
+alter table BANDMAN_ASSET add constraint FK_BANDMAN_ASSET_INVENTORY_ID foreign key (INVENTORY_ID) references BANDMAN_INVENTORY(ID)^
+create index IDX_BANDMAN_ASSET_INVENTORY on BANDMAN_ASSET (INVENTORY_ID)^
+-- end BANDMAN_ASSET
+-- begin BANDMAN_TO_DO_USER_LINK
+alter table BANDMAN_TO_DO_USER_LINK add constraint FK_BTDUL_TO_DO foreign key (TO_DO_ID) references BANDMAN_TO_DO (ID)^
+alter table BANDMAN_TO_DO_USER_LINK add constraint FK_BTDUL_USER foreign key (USER_ID) references SEC_USER (ID)^
+-- end BANDMAN_TO_DO_USER_LINK

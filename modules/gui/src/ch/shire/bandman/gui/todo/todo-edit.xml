@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="ch.shire.bandman.gui.todo.ToDoEdit"
+        datasource="toDoDs"
+        focusComponent="fieldGroup"
+        messagesPack="ch.shire.bandman.gui.todo">
+    <dsContext>
+        <datasource id="toDoDs"
+                    class="ch.shire.bandman.entity.ToDo"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="toDoDs">
+            <column width="250px">
+                <field id="taskName"/>
+                <field id="dueDate"/>
+                <field id="finished"/>
+                <field id="description"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

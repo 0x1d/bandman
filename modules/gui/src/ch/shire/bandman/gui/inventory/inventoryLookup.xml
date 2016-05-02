@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ch.shire.bandman.gui.inventory.Inventorylookup"
+        lookupComponent="inventoryTable"
+        messagesPack="ch.shire.bandman.gui.inventory">
+    <dsContext>
+        <collectionDatasource id="inventoryDs"
+                              class="ch.shire.bandman.entity.Inventory"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$Inventory e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="inventoryTable">
+        <filter id="inventoryFilter"
+                applyTo="inventoryTable"
+                datasource="inventoryDs"
+                margin="false,false,true,false"/>
+        <table id="inventoryTable"
+               editable="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="inventoryDs"/>
+            <buttonsPanel>
+                <button id="createInventory"
+                        action="inventoryTable.create"/>
+                <button id="editInventory"
+                        action="inventoryTable.edit"/>
+                <button id="deleteInventory"
+                        action="inventoryTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

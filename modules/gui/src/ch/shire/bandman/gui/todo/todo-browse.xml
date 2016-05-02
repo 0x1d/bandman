@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ch.shire.bandman.gui.todo.ToDoBrowse"
+        focusComponent="toDoesTable"
+        lookupComponent="toDoesTable"
+        messagesPack="ch.shire.bandman.gui.todo">
+    <dsContext>
+        <collectionDatasource id="toDoesDs"
+                              class="ch.shire.bandman.entity.ToDo"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$ToDo e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="toDoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="toDoesTable"
+                datasource="toDoesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="toDoesTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="taskName"/>
+                <column id="dueDate"/>
+                <column id="finished"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="toDoesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="toDoesTable.create"/>
+                <button id="editBtn"
+                        action="toDoesTable.edit"/>
+                <button id="removeBtn"
+                        action="toDoesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

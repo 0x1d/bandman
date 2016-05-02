@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="bandman$Inventory.edit"
+            template="ch/shire/bandman/gui/inventory/inventory-edit.xml"/>
+    <screen id="bandman$Inventory.lookup"
+            template="ch/shire/bandman/gui/inventory/inventoryLookup.xml"/>
+    <screen id="bandman$Asset.edit"
+            template="ch/shire/bandman/gui/asset/asset-edit.xml"/>
+    <screen id="bandman$Shopping.edit"
+            template="ch/shire/bandman/gui/shopping/shopping-edit.xml"/>
+    <screen id="bandman$Shopping.browse"
+            template="ch/shire/bandman/gui/shopping/shopping-browse.xml"/>
+    <screen id="bandman$ToDo.edit"
+            template="ch/shire/bandman/gui/todo/todo-edit.xml"/>
+    <screen id="bandman$ToDo.browse"
+            template="ch/shire/bandman/gui/todo/todo-browse.xml"/>
+</screen-config>

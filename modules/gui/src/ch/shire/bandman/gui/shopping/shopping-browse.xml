@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ch.shire.bandman.gui.shopping.ShoppingBrowse"
+        focusComponent="shoppingsTable"
+        lookupComponent="shoppingsTable"
+        messagesPack="ch.shire.bandman.gui.shopping">
+    <dsContext>
+        <collectionDatasource id="shoppingsDs"
+                              class="ch.shire.bandman.entity.Shopping"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$Shopping e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="shoppingsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="shoppingsTable"
+                datasource="shoppingsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="shoppingsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="item"/>
+                <column id="bought"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="shoppingsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="shoppingsTable.create"/>
+                <button id="editBtn"
+                        action="shoppingsTable.edit"/>
+                <button id="removeBtn"
+                        action="shoppingsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

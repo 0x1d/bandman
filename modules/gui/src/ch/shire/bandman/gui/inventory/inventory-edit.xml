@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://captionEdit"
+        class="ch.shire.bandman.gui.inventory.InventoryEdit"
+        datasource="inventoryDs"
+        messagesPack="ch.shire.bandman.gui.inventory">
+    <dsContext>
+        <datasource id="inventoryDs"
+                    class="ch.shire.bandman.entity.Inventory"
+                    view="inventoryWithAssets">
+            <collectionDatasource id="assetDs"
+                                  property="assets"/>
+        </datasource>
+    </dsContext>
+    <layout expand="assetTable"
+            spacing="true">
+        <fieldGroup id="fields"
+                    datasource="inventoryDs">
+            <column width="250px">
+                <field id="name"/>
+            </column>
+        </fieldGroup>
+        <table id="assetTable"
+               editable="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="quantity"/>
+            </columns>
+            <rows datasource="assetDs"/>
+            <rowsCount/>
+            <buttonsPanel>
+                <button id="addAsset"
+                        action="assetTable.create"/>
+                <button id="editAsset"
+                        action="assetTable.edit"/>
+            </buttonsPanel>
+        </table>
+        <frame height="45px"
+               screen="editWindowActions"/>
+    </layout>
+</window>
