@@ -30,8 +30,8 @@
             </actions>
             <columns>
                 <column id="item"/>
-                <column id="bought"/>
                 <column id="description"/>
+                <column id="bought"/>
             </columns>
             <rows datasource="shoppingsDs"/>
             <rowsCount/>

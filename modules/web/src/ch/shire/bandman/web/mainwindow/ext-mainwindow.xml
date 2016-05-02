@@ -36,6 +36,7 @@
                         <groupBox id="todoGroup"
                                   caption="ToDo"
                                   collapsed="true"
+                                  height="100%"
                                   spacing="true"
                                   width="500px">
                             <table id="todoTable"
