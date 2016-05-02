@@ -25,6 +25,7 @@
             <table id="assetTable"
                    editable="true"
                    height="100%"
+                   multiselect="true"
                    width="100%">
                 <actions>
                     <action id="create"/>
@@ -34,6 +35,7 @@
                 <columns>
                     <column id="name"/>
                     <column id="quantity"/>
+                    <column id="price"/>
                 </columns>
                 <rows datasource="assetDs"/>
                 <rowsCount/>

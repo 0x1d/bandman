@@ -27,6 +27,7 @@ create table BANDMAN_ASSET (
     --
     NAME varchar(255),
     QUANTITY integer,
+    PRICE double precision,
     INVENTORY_ID varchar(36),
     --
     primary key (ID)

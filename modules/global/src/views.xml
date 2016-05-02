@@ -6,6 +6,7 @@
         <property name="assets">
             <property name="name"/>
             <property name="quantity"/>
+            <property name="price"/>
         </property>
     </view>
 </views>

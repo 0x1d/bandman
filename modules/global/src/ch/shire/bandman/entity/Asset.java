@@ -26,9 +26,21 @@ public class Asset extends StandardEntity {
     @Column(name = "QUANTITY")
     protected Integer quantity;
 
+    @Column(name = "PRICE")
+    protected Double price;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INVENTORY_ID")
     protected Inventory inventory;
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;

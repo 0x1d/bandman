@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.Column;
 import com.haulmont.chile.core.annotations.Composition;
+import java.util.LinkedHashSet;
 
 /**
  * @author user
@@ -27,15 +28,16 @@ public class Inventory extends StandardEntity {
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "inventory")
-    protected Set<Asset> assets;
+    protected LinkedHashSet<Asset> assets;
 
-    public void setAssets(Set<Asset> assets) {
+    public LinkedHashSet<Asset> getAssets() {
+        return assets;
+    }
+
+    public void setAssets(LinkedHashSet<Asset> assets) {
         this.assets = assets;
     }
 
-    public Set<Asset> getAssets() {
-        return assets;
-    }
 
 
     public void setName(String name) {
