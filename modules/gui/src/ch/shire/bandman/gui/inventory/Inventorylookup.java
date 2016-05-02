@@ -3,7 +3,6 @@
  */
 package ch.shire.bandman.gui.inventory;
 
-
 import com.haulmont.cuba.gui.components.AbstractWindow;
 import com.haulmont.cuba.gui.components.AbstractLookup;
 import com.haulmont.cuba.gui.components.Component;
