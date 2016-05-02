@@ -41,6 +41,7 @@ cuba {
         classComment ='''/**
  * @author ${USER}
  */'''
+        vcs = 'Git'
         
     }
 }

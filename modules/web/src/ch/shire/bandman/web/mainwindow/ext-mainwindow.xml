@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ch.shire.bandman.web.mainwindow.ExtAppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
+    <dsContext>
+        <collectionDatasource id="shoppingDs"
+                              class="ch.shire.bandman.entity.Shopping"
+                              maxResults="50"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$Shopping e order by e.bought asc]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="todoDs"
+                              class="ch.shire.bandman.entity.ToDo"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$ToDo e order by e.createTs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <hbox id="titleBar">
+            <embedded id="logoImage"
+                      visible="false"/>
+        </hbox>
+        <split id="foldersSplit"
+               pos="6">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <flowBox id="toolsFlowBox"
+                             height="100%"
+                             spacing="true"
+                             width="100%">
+                        <groupBox id="todoGroup"
+                                  caption="ToDo"
+                                  collapsed="true"
+                                  spacing="true"
+                                  width="500px">
+                            <table id="todoTable"
+                                   height="100%"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="remove"/>
+                                    <action id="refresh"/>
+                                    <action id="edit"/>
+                                </actions>
+                                <columns>
+                                    <column id="taskName"/>
+                                    <column id="dueDate"/>
+                                    <column id="finished"/>
+                                    <column id="description"
+                                            visible="false"/>
+                                </columns>
+                                <rows datasource="todoDs"/>
+                                <buttonsPanel>
+                                    <button id="addTodo"
+                                            action="todoTable.create"/>
+                                    <button id="removeTodo"
+                                            action="todoTable.refresh"/>
+                                    <button id="refresh"
+                                            action="todoTable.refresh"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                        <groupBox id="shoppingGroup"
+                                  caption="Shopping List"
+                                  collapsed="true"
+                                  height="100%"
+                                  spacing="true"
+                                  width="500px">
+                            <table id="shoppingTable"
+                                   height="100%"
+                                   multiselect="true"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="edit"/>
+                                    <action id="remove"/>
+                                    <action id="refresh"/>
+                                </actions>
+                                <columns>
+                                    <column id="item"/>
+                                    <column id="bought"
+                                            width="50px"/>
+                                    <column id="description"
+                                            visible="false"/>
+                                </columns>
+                                <rows datasource="shoppingDs"/>
+                                <buttonsPanel>
+                                    <button id="addShoppingItem"
+                                            action="shoppingTable.create"/>
+                                    <button id="deleteShoppingItem"
+                                            action="shoppingTable.remove"/>
+                                    <button id="refreshShopppingList"
+                                            action="shoppingTable.refresh"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </flowBox>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
+    </layout>
+</window>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
-
     <include file="/screens.xml"/>
-
+    <screen id="mainWindow"
+            template="ch/shire/bandman/web/mainwindow/ext-mainwindow.xml"/>
 </screen-config>
