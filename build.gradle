@@ -42,7 +42,6 @@ cuba {
  * @author ${USER}
  */'''
         vcs = 'Git'
-        
     }
 }
 
@@ -71,6 +70,9 @@ configure([globalModule, coreModule, guiModule, webModule]) {
 configure(globalModule) {
     dependencies {
         compile("com.haulmont.cuba:cuba-global:$cubaVersion")
+        compile("com.haulmont.reports:reports-global:$cubaVersion")
+        compile("com.haulmont.fts:fts-global:$cubaVersion")
+        compile("com.haulmont.charts:charts-global:$cubaVersion")
 
     }
 
@@ -94,6 +96,9 @@ configure(coreModule) {
         testCompile("com.haulmont.cuba:cuba-core-tests:$cubaVersion")
         testCompile("com.haulmont.cuba:cuba-shared-lib:$cubaVersion")
         dbscripts("com.haulmont.cuba:cuba-core:$cubaVersion:db@zip")
+        compile("com.haulmont.reports:reports-core:$cubaVersion")
+        dbscripts("com.haulmont.reports:reports-core:$cubaVersion:db@zip")
+        compile("com.haulmont.fts:fts-core:$cubaVersion")
 
     }
 
@@ -108,7 +113,7 @@ configure(coreModule) {
 
     task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
         appName = 'app-core'
-        appJars('cuba-global', 'cuba-core', 
+        appJars('cuba-core', 'reports-core', 'fts-core', 'cuba-global', 'reports-global', 'fts-global', 'charts-global', 
                 'app-global', 'app-core')
     }
 
@@ -136,6 +141,10 @@ configure(guiModule) {
         compile("com.haulmont.cuba:cuba-gui:$cubaVersion")
         testCompile("com.haulmont.cuba:cuba-client-tests:$cubaVersion")
         testCompile('org.jmockit:jmockit:1.15')
+        compile("com.haulmont.reports:reports-gui:$cubaVersion")
+        compile("com.haulmont.fts:fts-gui:$cubaVersion")
+        compile("com.haulmont.charts:charts-gui:$cubaVersion")
+        testCompile('org.jmockit:jmockit:1.15')
 
     }
 
@@ -158,8 +167,13 @@ configure(webModule) {
         compile(guiModule)
         compile("com.haulmont.cuba:cuba-web:$cubaVersion")
         webcontent("com.haulmont.cuba:cuba-web:$cubaVersion:web@zip")
-        webcontent("com.haulmont.cuba:cuba-web-toolkit:$cubaVersion:web@zip")
         testCompile("com.haulmont.cuba:cuba-client-tests:$cubaVersion")
+        testCompile('org.jmockit:jmockit:1.15')
+        compile("com.haulmont.reports:reports-web:$cubaVersion")
+        compile("com.haulmont.fts:fts-web:$cubaVersion")
+        compile("com.haulmont.charts:charts-web:$cubaVersion")
+        webcontent("com.haulmont.charts:charts-web:$cubaVersion:web@zip")
+        webcontent("com.haulmont.charts:charts-web-toolkit:$cubaVersion:web@zip")
         testCompile('org.jmockit:jmockit:1.15')
 
     }
@@ -196,7 +210,7 @@ configure(webModule) {
 
     task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
         appName = 'app'
-        appJars('cuba-web', 'cuba-global', 'cuba-client', 'cuba-gui', 
+        appJars('cuba-web', 'reports-web', 'fts-web', 'charts-web', 'cuba-global', 'reports-global', 'fts-global', 'charts-global', 'cuba-client', 'cuba-gui', 'reports-gui', 'fts-gui', 'charts-gui', 
                 'app-global', 'app-gui', 'app-web')
     }
 }

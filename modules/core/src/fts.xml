@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="ch.shire.bandman.entity.Inventory">
+            <include re=".*"/>
+        </entity>
+        <entity class="ch.shire.bandman.entity.Asset">
+            <include re=".*"/>
+        </entity>
+        <entity class="ch.shire.bandman.entity.Shopping">
+            <include re=".*"/>
+        </entity>
+        <entity class="ch.shire.bandman.entity.ToDo">
+            <include re=".*"/>
+        </entity>
+        <entity class="ch.shire.bandman.entity.Booking">
+            <include re=".*"/>
+        </entity>
+        <entity class="ch.shire.bandman.entity.Expense">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>
