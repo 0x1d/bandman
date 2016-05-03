@@ -64,7 +64,8 @@ order by e.expenseDate desc]]>
                                                     openType="DIALOG"/>
                                             <action id="remove"/>
                                             <action id="refresh"/>
-                                            <action id="edit" openType="DIALOG" />
+                                            <action id="edit"
+                                                    openType="DIALOG"/>
                                         </actions>
                                         <columns>
                                             <column id="taskName"/>
@@ -134,8 +135,9 @@ order by e.expenseDate desc]]>
                                             <action id="create"
                                                     openType="DIALOG"/>
                                             <action id="remove"/>
-                                            <action id="refresh" />
-                                            <action id="edit" openType="DIALOG"/>
+                                            <action id="refresh"/>
+                                            <action id="edit"
+                                                    openType="DIALOG"/>
                                         </actions>
                                         <columns>
                                             <column id="bookingStart"/>
@@ -158,6 +160,7 @@ order by e.expenseDate desc]]>
                                      margin="true"
                                      spacing="true">
                                     <table id="expenseTable"
+                                           aggregatable="true"
                                            height="100%"
                                            width="100%">
                                         <actions>
@@ -171,7 +174,9 @@ order by e.expenseDate desc]]>
                                         <columns>
                                             <column id="expenseDate"/>
                                             <column id="item"/>
-                                            <column id="price"/>
+                                            <column id="price">
+                                                <aggregation type="SUM"/>
+                                            </column>
                                             <column id="buyer"/>
                                             <column id="comment"/>
                                             <column id="settled"/>
