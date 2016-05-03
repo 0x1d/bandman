@@ -9,21 +9,21 @@
                               maxResults="50"
                               view="_local">
             <query>
-                <![CDATA[select e from bandman$Shopping e order by e.bought asc]]>
+                <![CDATA[select e from bandman$Shopping e where e.bought IS NULL or e.bought = false order by e.bought asc]]>
             </query>
         </collectionDatasource>
         <collectionDatasource id="todoDs"
                               class="ch.shire.bandman.entity.ToDo"
                               view="_local">
             <query>
-                <![CDATA[select e from bandman$ToDo e order by e.createTs]]>
+                <![CDATA[select e from bandman$ToDo e where e.finished is null or e.finished = false order by e.createTs]]>
             </query>
         </collectionDatasource>
         <collectionDatasource id="bookingDs"
                               class="ch.shire.bandman.entity.Booking"
                               view="bookingWithParticipants">
             <query>
-                <![CDATA[select e from bandman$Booking e]]>
+                <![CDATA[select e from bandman$Booking e where e.bookingEnd >= CURRENT_DATE  order by e.bookingStart asc]]>
             </query>
         </collectionDatasource>
     </dsContext>
@@ -36,16 +36,82 @@
                pos="6">
             <main:workArea id="workArea">
                 <main:initialLayout spacing="false">
-                    <flowBox id="toolsFlowBox"
-                             height="100%"
-                             spacing="true"
-                             width="100%">
+                    <split id="toolsSplitPanel"
+                           height="100%"
+                           orientation="horizontal"
+                           width="100%">
+                        <split id="hsplitPanel"
+                               height="100%"
+                               orientation="vertical"
+                               width="100%">
+                            <groupBox id="todoGroup"
+                                      caption="ToDo"
+                                      collapsed="true"
+                                      height="100%"
+                                      spacing="true">
+                                <table id="todoTable"
+                                       height="100%"
+                                       width="100%">
+                                    <actions>
+                                        <action id="create"/>
+                                        <action id="remove"/>
+                                        <action id="refresh"/>
+                                        <action id="edit"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="taskName"/>
+                                        <column id="dueDate"/>
+                                        <column id="finished"/>
+                                        <column id="description"
+                                                visible="false"/>
+                                    </columns>
+                                    <rows datasource="todoDs"/>
+                                    <buttonsPanel>
+                                        <button id="addTodo"
+                                                action="todoTable.create"/>
+                                        <button id="refresh"
+                                                action="todoTable.refresh"/>
+                                    </buttonsPanel>
+                                </table>
+                            </groupBox>
+                            <groupBox id="shoppingGroup"
+                                      caption="Shopping List"
+                                      collapsed="true"
+                                      height="100%"
+                                      spacing="true">
+                                <table id="shoppingTable"
+                                       height="100%"
+                                       multiselect="true"
+                                       width="100%">
+                                    <actions>
+                                        <action id="create"/>
+                                        <action id="edit"/>
+                                        <action id="remove"/>
+                                        <action id="refresh"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="item"/>
+                                        <column id="bought"
+                                                collapsed="true"
+                                                width="50px"/>
+                                        <column id="description"
+                                                visible="false"/>
+                                    </columns>
+                                    <rows datasource="shoppingDs"/>
+                                    <buttonsPanel>
+                                        <button id="addShoppingItem"
+                                                action="shoppingTable.create"/>
+                                        <button id="refreshShopppingList"
+                                                action="shoppingTable.refresh"/>
+                                    </buttonsPanel>
+                                </table>
+                            </groupBox>
+                        </split>
                         <groupBox id="bookingGroup"
                                   caption="Booking"
                                   collapsed="true"
                                   height="100%"
-                                  spacing="true"
-                                  width="AUTO">
+                                  spacing="true">
                             <table id="bookingTable"
                                    height="100%"
                                    width="100%">
@@ -67,74 +133,11 @@
                                     <button id="button_1"
                                             action="bookingTable.create"/>
                                     <button id="button_3"
-                                            action="todoTable.refresh"/>
+                                            action="bookingTable.refresh"/>
                                 </buttonsPanel>
                             </table>
                         </groupBox>
-                        <groupBox id="todoGroup"
-                                  caption="ToDo"
-                                  collapsed="true"
-                                  height="100%"
-                                  spacing="true"
-                                  width="AUTO">
-                            <table id="todoTable"
-                                   height="100%"
-                                   width="100%">
-                                <actions>
-                                    <action id="create"/>
-                                    <action id="remove"/>
-                                    <action id="refresh"/>
-                                    <action id="edit"/>
-                                </actions>
-                                <columns>
-                                    <column id="taskName"/>
-                                    <column id="dueDate"/>
-                                    <column id="finished"/>
-                                    <column id="description"
-                                            visible="false"/>
-                                </columns>
-                                <rows datasource="todoDs"/>
-                                <buttonsPanel>
-                                    <button id="addTodo"
-                                            action="todoTable.create"/>
-                                    <button id="refresh"
-                                            action="todoTable.refresh"/>
-                                </buttonsPanel>
-                            </table>
-                        </groupBox>
-                        <groupBox id="shoppingGroup"
-                                  caption="Shopping List"
-                                  collapsed="true"
-                                  height="100%"
-                                  spacing="true"
-                                  width="AUTO">
-                            <table id="shoppingTable"
-                                   height="100%"
-                                   multiselect="true"
-                                   width="100%">
-                                <actions>
-                                    <action id="create"/>
-                                    <action id="edit"/>
-                                    <action id="remove"/>
-                                    <action id="refresh"/>
-                                </actions>
-                                <columns>
-                                    <column id="item"/>
-                                    <column id="bought"
-                                            width="50px"/>
-                                    <column id="description"
-                                            visible="false"/>
-                                </columns>
-                                <rows datasource="shoppingDs"/>
-                                <buttonsPanel>
-                                    <button id="addShoppingItem"
-                                            action="shoppingTable.create"/>
-                                    <button id="refreshShopppingList"
-                                            action="shoppingTable.refresh"/>
-                                </buttonsPanel>
-                            </table>
-                        </groupBox>
-                    </flowBox>
+                    </split>
                 </main:initialLayout>
             </main:workArea>
         </split>
