@@ -35,4 +35,18 @@
         </property>
         <property name="doNotDisturb"/>
     </view>
+    <view class="ch.shire.bandman.entity.Expense"
+          name="expenseWithBuyer">
+        <property name="expenseDate"/>
+        <property name="item"/>
+        <property name="buyer">
+            <property name="name"/>
+            <property name="firstName"/>
+            <property name="lastName"/>
+            <property name="login"/>
+        </property>
+        <property name="price"/>
+        <property name="comment"/>
+        <property name="settled"/>
+    </view>
 </views>

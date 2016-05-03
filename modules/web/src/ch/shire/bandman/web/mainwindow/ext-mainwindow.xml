@@ -9,7 +9,7 @@
                               maxResults="50"
                               view="_local">
             <query>
-                <![CDATA[select e from bandman$Shopping e where e.bought IS NULL or e.bought = false order by e.bought asc]]>
+                <![CDATA[select e from bandman$Shopping e where e.bought IS NULL or e.bought = false order by e.createTs asc]]>
             </query>
         </collectionDatasource>
         <collectionDatasource id="todoDs"

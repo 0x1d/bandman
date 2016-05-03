@@ -20,4 +20,8 @@
             template="ch/shire/bandman/gui/booking/booking-edit.xml"/>
     <screen id="bandman$Booking.browse"
             template="ch/shire/bandman/gui/booking/booking-browse.xml"/>
+    <screen id="bandman$Expense.edit"
+            template="ch/shire/bandman/gui/expense/expense-edit.xml"/>
+    <screen id="bandman$Expense.browse"
+            template="ch/shire/bandman/gui/expense/expense-browse.xml"/>
 </screen-config>

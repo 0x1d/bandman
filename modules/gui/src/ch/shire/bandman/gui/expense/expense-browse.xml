@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ch.shire.bandman.gui.expense.ExpenseBrowse"
+        focusComponent="expensesTable"
+        lookupComponent="expensesTable"
+        messagesPack="ch.shire.bandman.gui.expense">
+    <dsContext>
+        <collectionDatasource id="expensesDs"
+                              class="ch.shire.bandman.entity.Expense"
+                              view="expenseWithBuyer">
+            <query>
+                <![CDATA[select e from bandman$Expense e order by e.expenseDate desc]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="expensesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="expensesTable"
+                datasource="expensesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="expensesTable"
+               aggregatable="true"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="expenseDate"/>
+                <column id="item"/>
+                <column id="price">
+                    <aggregation type="SUM"/>
+                </column>
+                <column id="comment"/>
+                <column id="buyer"/>
+                <column id="settled"/>
+            </columns>
+            <rows datasource="expensesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="expensesTable.create"/>
+                <button id="editBtn"
+                        action="expensesTable.edit"/>
+                <button id="removeBtn"
+                        action="expensesTable.remove"/>
+                <button id="refreshBtn"
+                        action="expensesTable.refresh"/>
+                <button id="excelBtn"
+                        action="expensesTable.excel"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

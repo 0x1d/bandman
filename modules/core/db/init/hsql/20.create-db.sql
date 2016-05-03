@@ -17,3 +17,7 @@ alter table BANDMAN_ASSET_USER_LINK add constraint FK_BAUL_USER foreign key (USE
 alter table BANDMAN_BOOKING_USER_LINK add constraint FK_BBUL_BOOKING foreign key (BOOKING_ID) references BANDMAN_BOOKING (ID)^
 alter table BANDMAN_BOOKING_USER_LINK add constraint FK_BBUL_USER foreign key (USER_ID) references SEC_USER (ID)^
 -- end BANDMAN_BOOKING_USER_LINK
+-- begin BANDMAN_EXPENSE
+alter table BANDMAN_EXPENSE add constraint FK_BANDMAN_EXPENSE_BUYER_ID foreign key (BUYER_ID) references SEC_USER(ID)^
+create index IDX_BANDMAN_EXPENSE_BUYER on BANDMAN_EXPENSE (BUYER_ID)^
+-- end BANDMAN_EXPENSE

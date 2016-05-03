@@ -7,6 +7,7 @@
         <item id="bandman$Shopping.browse"/>
         <item id="bandman$ToDo.browse"/>
         <item id="bandman$Booking.browse"/>
+        <item id="bandman$Expense.browse"/>
     </menu>
     <menu id="application"
           insertBefore="administration">
