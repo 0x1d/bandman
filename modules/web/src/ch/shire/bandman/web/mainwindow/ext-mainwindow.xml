@@ -26,12 +26,16 @@
                 <![CDATA[select e from bandman$Booking e where e.bookingEnd >= CURRENT_DATE  order by e.bookingStart asc]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="expenseDs"
+                              class="ch.shire.bandman.entity.Expense"
+                              view="expenseWithBuyer">
+            <query>
+                <![CDATA[select e from bandman$Expense e where e.settled is null or e.settled = false 
+order by e.expenseDate desc]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout>
-        <hbox id="titleBar">
-            <embedded id="logoImage"
-                      visible="false"/>
-        </hbox>
         <split id="foldersSplit"
                pos="6">
             <main:workArea id="workArea">
@@ -40,103 +44,153 @@
                            height="100%"
                            orientation="horizontal"
                            width="100%">
-                        <split id="hsplitPanel"
-                               height="100%"
-                               orientation="vertical"
-                               width="100%">
-                            <groupBox id="todoGroup"
-                                      caption="ToDo"
-                                      collapsed="true"
-                                      height="100%"
-                                      spacing="true">
-                                <table id="todoTable"
-                                       height="100%"
-                                       width="100%">
-                                    <actions>
-                                        <action id="create"/>
-                                        <action id="remove"/>
-                                        <action id="refresh"/>
-                                        <action id="edit"/>
-                                    </actions>
-                                    <columns>
-                                        <column id="taskName"/>
-                                        <column id="dueDate"/>
-                                        <column id="finished"/>
-                                        <column id="description"
-                                                visible="false"/>
-                                    </columns>
-                                    <rows datasource="todoDs"/>
-                                    <buttonsPanel>
-                                        <button id="addTodo"
-                                                action="todoTable.create"/>
-                                        <button id="refresh"
-                                                action="todoTable.refresh"/>
-                                    </buttonsPanel>
-                                </table>
-                            </groupBox>
-                            <groupBox id="shoppingGroup"
-                                      caption="Shopping List"
-                                      collapsed="true"
-                                      height="100%"
-                                      spacing="true">
-                                <table id="shoppingTable"
-                                       height="100%"
-                                       multiselect="true"
-                                       width="100%">
-                                    <actions>
-                                        <action id="create"/>
-                                        <action id="edit"/>
-                                        <action id="remove"/>
-                                        <action id="refresh"/>
-                                    </actions>
-                                    <columns>
-                                        <column id="item"/>
-                                        <column id="bought"
-                                                collapsed="true"
-                                                width="50px"/>
-                                        <column id="description"
-                                                visible="false"/>
-                                    </columns>
-                                    <rows datasource="shoppingDs"/>
-                                    <buttonsPanel>
-                                        <button id="addShoppingItem"
-                                                action="shoppingTable.create"/>
-                                        <button id="refreshShopppingList"
-                                                action="shoppingTable.refresh"/>
-                                    </buttonsPanel>
-                                </table>
-                            </groupBox>
-                        </split>
-                        <groupBox id="bookingGroup"
-                                  caption="Booking"
-                                  collapsed="true"
-                                  height="100%"
-                                  spacing="true">
-                            <table id="bookingTable"
+                        <vbox id="vboxLeft"
+                              height="100%"
+                              margin="true">
+                            <split id="hsplitPanel"
                                    height="100%"
+                                   orientation="vertical"
                                    width="100%">
-                                <actions>
-                                    <action id="create"/>
-                                    <action id="remove"/>
-                                    <action id="refresh"/>
-                                    <action id="edit"/>
-                                </actions>
-                                <columns>
-                                    <column id="bookingStart"/>
-                                    <column id="bookingEnd"/>
-                                    <column id="title"/>
-                                    <column id="description"/>
-                                    <column id="doNotDisturb"/>
-                                </columns>
-                                <rows datasource="bookingDs"/>
-                                <buttonsPanel>
-                                    <button id="button_1"
-                                            action="bookingTable.create"/>
-                                    <button id="button_3"
-                                            action="bookingTable.refresh"/>
-                                </buttonsPanel>
-                            </table>
-                        </groupBox>
+                                <groupBox id="todoGroup"
+                                          caption="ToDo"
+                                          collapsed="true"
+                                          height="100%"
+                                          spacing="true">
+                                    <table id="todoTable"
+                                           height="100%"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"
+                                                    openType="DIALOG"/>
+                                            <action id="remove"
+                                                    openType="DIALOG"/>
+                                            <action id="refresh"/>
+                                            <action id="edit"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="taskName"/>
+                                            <column id="dueDate"/>
+                                            <column id="finished"/>
+                                            <column id="description"
+                                                    visible="false"/>
+                                        </columns>
+                                        <rows datasource="todoDs"/>
+                                        <buttonsPanel>
+                                            <button id="addTodo"
+                                                    action="todoTable.create"/>
+                                            <button id="refresh"
+                                                    action="todoTable.refresh"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </groupBox>
+                                <groupBox id="shoppingGroup"
+                                          caption="Shopping List"
+                                          collapsed="true"
+                                          height="100%"
+                                          spacing="true">
+                                    <table id="shoppingTable"
+                                           height="100%"
+                                           multiselect="true"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"
+                                                    openType="DIALOG"/>
+                                            <action id="edit"
+                                                    openType="DIALOG"/>
+                                            <action id="remove"/>
+                                            <action id="refresh"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="item"/>
+                                            <column id="bought"
+                                                    collapsed="true"
+                                                    width="50px"/>
+                                            <column id="description"
+                                                    visible="false"/>
+                                        </columns>
+                                        <rows datasource="shoppingDs"/>
+                                        <buttonsPanel>
+                                            <button id="addShoppingItem"
+                                                    action="shoppingTable.create"/>
+                                            <button id="refreshShopppingList"
+                                                    action="shoppingTable.refresh"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </groupBox>
+                            </split>
+                        </vbox>
+                        <vbox id="vboxRight"
+                              height="100%"
+                              margin="true">
+                            <tabSheet id="rightTabs"
+                                      height="100%">
+                                <tab id="bookingsTab"
+                                     caption="Bookings"
+                                     margin="true"
+                                     spacing="true">
+                                    <table id="bookingTable"
+                                           height="100%"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"
+                                                    openType="DIALOG"/>
+                                            <action id="remove"/>
+                                            <action id="refresh"
+                                                    openType="DIALOG"/>
+                                            <action id="edit"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="bookingStart"/>
+                                            <column id="bookingEnd"/>
+                                            <column id="title"/>
+                                            <column id="description"/>
+                                            <column id="doNotDisturb"/>
+                                        </columns>
+                                        <rows datasource="bookingDs"/>
+                                        <buttonsPanel>
+                                            <button id="button_1"
+                                                    action="bookingTable.create"/>
+                                            <button id="button_3"
+                                                    action="bookingTable.refresh"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </tab>
+                                <tab id="expenseTab"
+                                     caption="Expenses"
+                                     margin="true"
+                                     spacing="true">
+                                    <table id="expenseTable"
+                                           height="100%"
+                                           width="100%">
+                                        <actions>
+                                            <action id="create"
+                                                    openType="DIALOG"/>
+                                            <action id="refresh"/>
+                                            <action id="excel"/>
+                                            <action id="edit"
+                                                    openType="DIALOG"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="expenseDate"/>
+                                            <column id="item"/>
+                                            <column id="price"/>
+                                            <column id="buyer"/>
+                                            <column id="comment"/>
+                                            <column id="settled"/>
+                                        </columns>
+                                        <rows datasource="expenseDs"/>
+                                        <buttonsPanel>
+                                            <button id="addExpenseButton"
+                                                    action="expenseTable.create"/>
+                                            <button id="refreshExpenseButton"
+                                                    action="bookingTable.refresh"/>
+                                            <button id="expenseExcelButton"
+                                                    action="expenseTable.excel"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </tab>
+                            </tabSheet>
+                        </vbox>
                     </split>
                 </main:initialLayout>
             </main:workArea>
