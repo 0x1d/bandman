@@ -9,4 +9,16 @@
             <property name="price"/>
         </property>
     </view>
+    <view class="ch.shire.bandman.entity.Asset"
+          name="assetWithOwners">
+        <property name="name"/>
+        <property name="quantity"/>
+        <property name="price"/>
+        <property name="owners">
+            <property name="name"/>
+            <property name="firstName"/>
+            <property name="lastName"/>
+            <property name="email"/>
+        </property>
+    </view>
 </views>

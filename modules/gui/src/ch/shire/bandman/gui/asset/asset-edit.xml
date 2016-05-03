@@ -7,7 +7,10 @@
     <dsContext>
         <datasource id="assetDs"
                     class="ch.shire.bandman.entity.Asset"
-                    view="_local"/>
+                    view="assetWithOwners">
+            <collectionDatasource id="ownersDs"
+                                  property="owners"/>
+        </datasource>
     </dsContext>
     <layout spacing="true">
         <fieldGroup id="assetFields"
@@ -18,6 +21,50 @@
                 <field id="price"/>
             </column>
         </fieldGroup>
+        <groupBox id="ownersBox"
+                  caption="msg://ch.shire.bandman.entity/Asset.owners">
+            <table id="ownersTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="login"
+                            visible="false"/>
+                    <column id="loginLowerCase"
+                            visible="false"/>
+                    <column id="password"
+                            visible="false"/>
+                    <column id="name"/>
+                    <column id="firstName"/>
+                    <column id="lastName"/>
+                    <column id="middleName"
+                            visible="false"/>
+                    <column id="position"
+                            visible="false"/>
+                    <column id="email"/>
+                    <column id="language"
+                            visible="false"/>
+                    <column id="timeZone"
+                            visible="false"/>
+                    <column id="timeZoneAuto"
+                            visible="false"/>
+                    <column id="active"
+                            visible="false"/>
+                    <column id="changePasswordAtNextLogon"
+                            visible="false"/>
+                    <column id="ipMask"
+                            visible="false"/>
+                </columns>
+                <rows datasource="ownersDs"/>
+                <buttonsPanel>
+                    <button action="ownersTable.add"/>
+                    <button action="ownersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <frame align="BOTTOM_LEFT"
                screen="editWindowActions"/>
     </layout>

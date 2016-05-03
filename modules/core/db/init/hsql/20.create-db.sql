@@ -9,3 +9,7 @@ create index IDX_BANDMAN_ASSET_INVENTORY on BANDMAN_ASSET (INVENTORY_ID)^
 alter table BANDMAN_TO_DO_USER_LINK add constraint FK_BTDUL_TO_DO foreign key (TO_DO_ID) references BANDMAN_TO_DO (ID)^
 alter table BANDMAN_TO_DO_USER_LINK add constraint FK_BTDUL_USER foreign key (USER_ID) references SEC_USER (ID)^
 -- end BANDMAN_TO_DO_USER_LINK
+-- begin BANDMAN_ASSET_USER_LINK
+alter table BANDMAN_ASSET_USER_LINK add constraint FK_BAUL_ASSET foreign key (ASSET_ID) references BANDMAN_ASSET (ID)^
+alter table BANDMAN_ASSET_USER_LINK add constraint FK_BAUL_USER foreign key (USER_ID) references SEC_USER (ID)^
+-- end BANDMAN_ASSET_USER_LINK
