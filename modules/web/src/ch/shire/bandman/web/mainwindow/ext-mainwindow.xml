@@ -62,10 +62,9 @@ order by e.expenseDate desc]]>
                                         <actions>
                                             <action id="create"
                                                     openType="DIALOG"/>
-                                            <action id="remove"
-                                                    openType="DIALOG"/>
+                                            <action id="remove"/>
                                             <action id="refresh"/>
-                                            <action id="edit"/>
+                                            <action id="edit" openType="DIALOG" />
                                         </actions>
                                         <columns>
                                             <column id="taskName"/>
@@ -135,9 +134,8 @@ order by e.expenseDate desc]]>
                                             <action id="create"
                                                     openType="DIALOG"/>
                                             <action id="remove"/>
-                                            <action id="refresh"
-                                                    openType="DIALOG"/>
-                                            <action id="edit"/>
+                                            <action id="refresh" />
+                                            <action id="edit" openType="DIALOG"/>
                                         </actions>
                                         <columns>
                                             <column id="bookingStart"/>
