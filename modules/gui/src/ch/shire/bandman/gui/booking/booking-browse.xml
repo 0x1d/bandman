@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ch.shire.bandman.gui.booking.BookingBrowse"
+        focusComponent="bookingsTable"
+        lookupComponent="bookingsTable"
+        messagesPack="ch.shire.bandman.gui.booking">
+    <dsContext>
+        <collectionDatasource id="bookingsDs"
+                              class="ch.shire.bandman.entity.Booking"
+                              view="_local">
+            <query>
+                <![CDATA[select e from bandman$Booking e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="bookingsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="bookingsTable"
+                datasource="bookingsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="bookingsTable"
+               multiselect="true"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+            </actions>
+            <columns>
+                <column id="bookingStart"/>
+                <column id="bookingEnd"/>
+                <column id="title"/>
+                <column id="description"/>
+                <column id="doNotDisturb"/>
+            </columns>
+            <rows datasource="bookingsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="bookingsTable.create"/>
+                <button id="editBtn"
+                        action="bookingsTable.edit"/>
+                <button id="removeBtn"
+                        action="bookingsTable.remove"/>
+                <button id="refreshBtn"
+                        action="bookingsTable.refresh"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

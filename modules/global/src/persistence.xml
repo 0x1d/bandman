@@ -7,5 +7,6 @@
         <class>ch.shire.bandman.entity.Asset</class>
         <class>ch.shire.bandman.entity.Shopping</class>
         <class>ch.shire.bandman.entity.ToDo</class>
+        <class>ch.shire.bandman.entity.Booking</class>
     </persistence-unit>
 </persistence>

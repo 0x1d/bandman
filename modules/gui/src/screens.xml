@@ -16,4 +16,8 @@
             template="ch/shire/bandman/gui/todo/todo-browse.xml"/>
     <screen id="dashboard"
             template="ch/shire/bandman/gui/screens/dashboard.xml"/>
+    <screen id="bandman$Booking.edit"
+            template="ch/shire/bandman/gui/booking/booking-edit.xml"/>
+    <screen id="bandman$Booking.browse"
+            template="ch/shire/bandman/gui/booking/booking-browse.xml"/>
 </screen-config>

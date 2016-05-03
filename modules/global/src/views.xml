@@ -21,4 +21,18 @@
             <property name="email"/>
         </property>
     </view>
+    <view class="ch.shire.bandman.entity.Booking"
+          name="bookingWithParticipants">
+        <property name="bookingStart"/>
+        <property name="bookingEnd"/>
+        <property name="title"/>
+        <property name="description"/>
+        <property name="participants">
+            <property name="name"/>
+            <property name="firstName"/>
+            <property name="lastName"/>
+            <property name="email"/>
+        </property>
+        <property name="doNotDisturb"/>
+    </view>
 </views>

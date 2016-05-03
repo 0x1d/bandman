@@ -13,3 +13,7 @@ alter table BANDMAN_TO_DO_USER_LINK add constraint FK_BTDUL_USER foreign key (US
 alter table BANDMAN_ASSET_USER_LINK add constraint FK_BAUL_ASSET foreign key (ASSET_ID) references BANDMAN_ASSET (ID)^
 alter table BANDMAN_ASSET_USER_LINK add constraint FK_BAUL_USER foreign key (USER_ID) references SEC_USER (ID)^
 -- end BANDMAN_ASSET_USER_LINK
+-- begin BANDMAN_BOOKING_USER_LINK
+alter table BANDMAN_BOOKING_USER_LINK add constraint FK_BBUL_BOOKING foreign key (BOOKING_ID) references BANDMAN_BOOKING (ID)^
+alter table BANDMAN_BOOKING_USER_LINK add constraint FK_BBUL_USER foreign key (USER_ID) references SEC_USER (ID)^
+-- end BANDMAN_BOOKING_USER_LINK

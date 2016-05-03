@@ -6,6 +6,7 @@
               openType="NEW_TAB"/>
         <item id="bandman$Shopping.browse"/>
         <item id="bandman$ToDo.browse"/>
+        <item id="bandman$Booking.browse"/>
     </menu>
     <menu id="application"
           insertBefore="administration">

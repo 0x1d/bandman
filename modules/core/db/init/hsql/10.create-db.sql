@@ -84,3 +84,30 @@ create table BANDMAN_ASSET_USER_LINK (
     primary key (ASSET_ID, USER_ID)
 )^
 -- end BANDMAN_ASSET_USER_LINK
+-- begin BANDMAN_BOOKING
+create table BANDMAN_BOOKING (
+    ID varchar(36) not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    BOOKING_START timestamp not null,
+    BOOKING_END timestamp not null,
+    TITLE varchar(255) not null,
+    DESCRIPTION varchar(1024),
+    DO_NOT_DISTURB boolean,
+    --
+    primary key (ID)
+)^
+-- end BANDMAN_BOOKING
+-- begin BANDMAN_BOOKING_USER_LINK
+create table BANDMAN_BOOKING_USER_LINK (
+    BOOKING_ID varchar(36) not null,
+    USER_ID varchar(36) not null,
+    primary key (BOOKING_ID, USER_ID)
+)^
+-- end BANDMAN_BOOKING_USER_LINK
