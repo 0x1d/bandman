@@ -24,12 +24,18 @@ public class ExtAppMainWindow extends AppMainWindow {
     protected CreateAction todoTableCreate;
     @Named("todoTable.edit")
     protected EditAction todoTableEdit;
+    @Named("bookingTable.create")
+    protected CreateAction bookingTableCreate;
+    @Named("bookingTable.edit")
+    protected EditAction bookingTableEdit;
     @Override
     public void init(Map<String, Object> params) {
         shoppingTableCreate.setOpenType(WindowManager.OpenType.DIALOG);
         shoppingTableEdit.setOpenType(WindowManager.OpenType.DIALOG);
         todoTableCreate.setOpenType(WindowManager.OpenType.DIALOG);
         todoTableEdit.setOpenType(WindowManager.OpenType.DIALOG);
+        bookingTableCreate.setOpenType(WindowManager.OpenType.DIALOG);
+        bookingTableEdit.setOpenType(WindowManager.OpenType.DIALOG);
     }
 
 }

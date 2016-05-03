@@ -19,6 +19,13 @@
                 <![CDATA[select e from bandman$ToDo e order by e.createTs]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="bookingDs"
+                              class="ch.shire.bandman.entity.Booking"
+                              view="bookingWithParticipants">
+            <query>
+                <![CDATA[select e from bandman$Booking e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout>
         <hbox id="titleBar">
@@ -28,17 +35,48 @@
         <split id="foldersSplit"
                pos="6">
             <main:workArea id="workArea">
-                <main:initialLayout>
+                <main:initialLayout spacing="false">
                     <flowBox id="toolsFlowBox"
                              height="100%"
                              spacing="true"
                              width="100%">
+                        <groupBox id="bookingGroup"
+                                  caption="Booking"
+                                  collapsed="true"
+                                  height="100%"
+                                  spacing="true"
+                                  width="AUTO">
+                            <table id="bookingTable"
+                                   height="100%"
+                                   width="100%">
+                                <actions>
+                                    <action id="create"/>
+                                    <action id="remove"/>
+                                    <action id="refresh"/>
+                                    <action id="edit"/>
+                                </actions>
+                                <columns>
+                                    <column id="bookingStart"/>
+                                    <column id="bookingEnd"/>
+                                    <column id="title"/>
+                                    <column id="description"/>
+                                    <column id="doNotDisturb"/>
+                                </columns>
+                                <rows datasource="bookingDs"/>
+                                <buttonsPanel>
+                                    <button id="button_1"
+                                            action="bookingTable.create"/>
+                                    <button id="button_3"
+                                            action="todoTable.refresh"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
                         <groupBox id="todoGroup"
                                   caption="ToDo"
                                   collapsed="true"
                                   height="100%"
                                   spacing="true"
-                                  width="500px">
+                                  width="AUTO">
                             <table id="todoTable"
                                    height="100%"
                                    width="100%">
@@ -59,8 +97,6 @@
                                 <buttonsPanel>
                                     <button id="addTodo"
                                             action="todoTable.create"/>
-                                    <button id="removeTodo"
-                                            action="todoTable.refresh"/>
                                     <button id="refresh"
                                             action="todoTable.refresh"/>
                                 </buttonsPanel>
@@ -71,7 +107,7 @@
                                   collapsed="true"
                                   height="100%"
                                   spacing="true"
-                                  width="500px">
+                                  width="AUTO">
                             <table id="shoppingTable"
                                    height="100%"
                                    multiselect="true"
@@ -93,8 +129,6 @@
                                 <buttonsPanel>
                                     <button id="addShoppingItem"
                                             action="shoppingTable.create"/>
-                                    <button id="deleteShoppingItem"
-                                            action="shoppingTable.remove"/>
                                     <button id="refreshShopppingList"
                                             action="shoppingTable.refresh"/>
                                 </buttonsPanel>
