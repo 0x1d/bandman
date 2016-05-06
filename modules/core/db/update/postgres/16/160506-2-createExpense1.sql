@@ -1,0 +1,2 @@
+alter table BANDMAN_EXPENSE add constraint FK_BANDMAN_EXPENSE_BUYER_ID foreign key (BUYER_ID) references SEC_USER(ID);
+create index IDX_BANDMAN_EXPENSE_BUYER on BANDMAN_EXPENSE (BUYER_ID);

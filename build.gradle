@@ -45,7 +45,7 @@ cuba {
     }
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.2.9'
+def postgres = 'org.postgresql:postgresql:9.4-1201-jdbc41'
 
 configure([globalModule, coreModule, guiModule, webModule]) {
     apply(plugin: 'java')
@@ -90,8 +90,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         provided(servletApi)
-        jdbc(hsql)
-        testRuntime(hsql)
+        jdbc(postgres)
+        testRuntime(postgres)
         compile("com.haulmont.cuba:cuba-core:$cubaVersion")
         testCompile("com.haulmont.cuba:cuba-core-tests:$cubaVersion")
         testCompile("com.haulmont.cuba:cuba-shared-lib:$cubaVersion")
@@ -118,19 +118,19 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'hsql'
-        host = 'localhost'
+        dbms = 'postgres'
+        host = '192.168.1.107'
         dbName = 'bandman'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'cuba'
+        dbPassword = 'cuba'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'hsql'
-        host = 'localhost'
+        dbms = 'postgres'
+        host = '192.168.1.107'
         dbName = 'bandman'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'cuba'
+        dbPassword = 'cuba'
     }
 }
 
@@ -235,4 +235,10 @@ task restart(dependsOn: ['stop', ':app-core:deploy', ':app-web:deploy'], descrip
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.6'
+}
+
+task buildWar(type: CubaWarBuilding) {
+    appHome = '${app.home}'
+    //appProperties = ['cuba.automaticDatabaseUpdate': 'true']
+    singleWar = false
 }
