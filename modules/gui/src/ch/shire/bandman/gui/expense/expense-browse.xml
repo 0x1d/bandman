@@ -35,7 +35,10 @@
                 <action id="excel"/>
             </actions>
             <columns>
-                <column id="expenseDate"/>
+                <column id="expenseDate">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter"
+                               format="dd.MM.yyyy"/>
+                </column>
                 <column id="item"/>
                 <column id="price">
                     <aggregation type="SUM"/>

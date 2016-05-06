@@ -33,8 +33,12 @@
                 <action id="refresh"/>
             </actions>
             <columns>
-                <column id="bookingStart"/>
-                <column id="bookingEnd"/>
+                <column id="bookingStart">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+               </column>
+                <column id="bookingEnd">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                </column>
                 <column id="title"/>
                 <column id="description"/>
                 <column id="doNotDisturb"/>

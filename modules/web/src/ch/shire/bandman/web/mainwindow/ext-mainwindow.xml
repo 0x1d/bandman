@@ -69,7 +69,9 @@ order by e.expenseDate desc]]>
                                         </actions>
                                         <columns>
                                             <column id="taskName"/>
-                                            <column id="dueDate"/>
+                                            <column id="dueDate">
+                                                <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                                            </column>
                                             <column id="finished"/>
                                             <column id="description"
                                                     visible="false"/>
@@ -140,8 +142,12 @@ order by e.expenseDate desc]]>
                                                     openType="DIALOG"/>
                                         </actions>
                                         <columns>
-                                            <column id="bookingStart"/>
-                                            <column id="bookingEnd"/>
+                                            <column id="bookingStart">
+                                                <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                                            </column>
+                                            <column id="bookingEnd">
+                                                <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                                            </column>
                                             <column id="title"/>
                                             <column id="description"/>
                                             <column id="doNotDisturb"/>
@@ -172,7 +178,9 @@ order by e.expenseDate desc]]>
                                                     openType="DIALOG"/>
                                         </actions>
                                         <columns>
-                                            <column id="expenseDate"/>
+                                            <column id="expenseDate">
+                                                <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                                            </column>
                                             <column id="item"/>
                                             <column id="price">
                                                 <aggregation type="SUM"/>

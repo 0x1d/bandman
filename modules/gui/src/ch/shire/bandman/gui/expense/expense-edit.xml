@@ -22,7 +22,7 @@
         <fieldGroup id="fieldGroup"
                     datasource="expenseDs">
             <column width="250px">
-                <field id="expenseDate"/>
+                <field id="expenseDate" dateFormat="dd.MM.yyyy HH:mm"/>
                 <field id="item"/>
                 <field id="price"/>
                 <field id="buyer"

@@ -30,7 +30,9 @@
             </actions>
             <columns>
                 <column id="taskName"/>
-                <column id="dueDate"/>
+                <column id="dueDate">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="dd.MM.yyyy HH:mm"/>
+                </column>
                 <column id="finished"/>
                 <column id="description"/>
             </columns>
